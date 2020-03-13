@@ -4,11 +4,19 @@ import { Link } from 'react-router-dom';
 
 
 class Register extends React.Component {
-   state = {}
+   state = {
+       username:'',
+       email:'',
+       password:'',
+       passwordConfirmation:''
+   }
 
-    handleChange = () => {}
+    handleChange = event => {
+        this.setState({[event.target.name]: event.target.value});
+    };
    
     render() {
+        const { username, email, password, passwordConfirmation }  = this.state;
         return (
            <Grid textAlign="center" verticalAlign="middle" className="app">
             <Grid.Column style={{ maxWidth: 450  }}>
@@ -19,16 +27,20 @@ class Register extends React.Component {
                 <Form size="large">
                     <Segment stacked>
                     <Form.Input fluidname="username" icon="user" iconPosition="left" 
-                    placeholder="username" onChange={this.handleChange} type="text" />
+                    placeholder="username" onChange={this.handleChange} value={username}
+                    type="text" />
 
                     <Form.Input fluidname="email" icon="mail" iconPosition="left" 
-                    placeholder="Email Address" onChange={this.handleChange} type="email" />
+                    placeholder="Email Address" onChange={this.handleChange} value={email}
+                    type="email" />
 
                     <Form.Input fluidname="password" icon="lock" iconPosition="left" 
-                    placeholder="password" onChange={this.handleChange} type="password" />
+                    placeholder="password" onChange={this.handleChange} value={password}
+                    type="password" />
 
                     <Form.Input fluidname="passwordConfirmation" icon="repeat" iconPosition="left" 
-                    placeholder="Password Confirmation" onChange={this.handleChange} type="password" />
+                    placeholder="Password Confirmation" onChange={this.handleChange} value={passwordConfirmation}
+                    type="password" />
                     
                     <Button color="black" fluid size="large">Submit</Button>
                     </Segment>
