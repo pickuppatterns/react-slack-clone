@@ -11,12 +11,23 @@ class Register extends React.Component {
        password: "",
        passwordConfirmation: ""
    };
+    isFormValid = () => {
+        if(this.isFormEmpty) {
+            //throw err
+        } else if (!this.isPasswordValid()) {
+        //throw err
+    } else {
+        //consider form valid
+        return true;
+        }
+    }   
 
     handleChange = event => {
         this.setState({[event.target.name]: event.target.value });
     };
     handleSubmit = event => {
-       event.preventDefault();
+       if (this.isFormValid()) {
+        event.preventDefault();
        firebase 
         .auth()
         .createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -26,6 +37,7 @@ class Register extends React.Component {
         .catch(err => {
             console.error(err);
         }); 
+    }
    }
     render() {
         const { username, email, password, passwordConfirmation }  = this.state;
