@@ -95,6 +95,13 @@ class Register extends React.Component {
 
                     <Form.Input fluid name="email" icon="mail" iconPosition="left" 
                     placeholder="Email Address" onChange={this.handleChange} value={email}
+                    className={
+                        errors.some(error => 
+                        error.message.toLowerCase().includes("email")
+                        ) 
+                        ? "error" 
+                        : ""
+                    } 
                     type="email" />
 
                     <Form.Input fluid name="password" icon="lock" iconPosition="left" 
