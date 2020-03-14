@@ -1,5 +1,6 @@
-##Slack Clone
-##Codebase
-*React
-*Firebase
-*Semantic UI
+## Slack Clone
+## Codebase
+* React
+* Firebase
+* Semantic UI
+* md5
