@@ -71,6 +71,15 @@ class Register extends React.Component {
     }
    };
 
+   handleInputError = (errors, inputName) => {
+        return errors.some(error => 
+        error.message.toLowerCase().includes(inputName)
+        ) 
+        ? "error" 
+        : ""
+
+   }
+
     render() {
         const { username, 
                 email, 
@@ -91,25 +100,22 @@ class Register extends React.Component {
                     <Segment stacked>
                     <Form.Input fluid name="username" icon="user" iconPosition="left" 
                     placeholder="username" onChange={this.handleChange} value={username}
+                    className={this.handleInputError(errors, 'username')} 
                     type="text" />
 
                     <Form.Input fluid name="email" icon="mail" iconPosition="left" 
                     placeholder="Email Address" onChange={this.handleChange} value={email}
-                    className={
-                        errors.some(error => 
-                        error.message.toLowerCase().includes("email")
-                        ) 
-                        ? "error" 
-                        : ""
-                    } 
+                    className={this.handleInputError(errors, 'email')} 
                     type="email" />
 
                     <Form.Input fluid name="password" icon="lock" iconPosition="left" 
                     placeholder="password" onChange={this.handleChange} value={password}
+                    className={this.handleInputError(errors, 'password')} 
                     type="password" />
 
                     <Form.Input fluid name="passwordConfirmation" icon="repeat" iconPosition="left" 
                     placeholder="Password Confirmation" onChange={this.handleChange} value={passwordConfirmation}
+                    className={this.handleInputError(errors, 'password')} 
                     type="password" />
                     
                     <Button disabled={loading} className={loading ? 'loading' : ''} color="black" fluid size="large">Submit</Button>
