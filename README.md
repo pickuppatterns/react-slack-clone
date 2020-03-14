@@ -2,3 +2,4 @@
 ##Codebase
 *React
 *Firebase
+*Semantic UI
